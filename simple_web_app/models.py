@@ -36,7 +36,7 @@ class PasswordValidator(BaseModel):
             EspecialCharacterValidator(),
             SlashCharacterValidator(),
             CaretCharacterValidator(),
-            TildeCharacterValidator()
+            TildeCharacterValidator(),
         ]
         return validators
 

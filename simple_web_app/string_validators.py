@@ -89,7 +89,6 @@ class CaretCharacterValidator(Validator):
 
 
 class TildeCharacterValidator(Validator):
-
     def validate(self, content):
         content_set = set(content)
         if "~" in content_set and "~" in punctuation:
