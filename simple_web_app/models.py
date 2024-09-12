@@ -3,10 +3,13 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 from .string_validators import (
+    CaretCharacterValidator,
     DigitValidator,
     EspecialCharacterValidator,
     LengthValidator,
     LowerCaseValidator,
+    SlashCharacterValidator,
+    TildeCharacterValidator,
     UpperCaseValidator,
     Validator,
 )
@@ -31,6 +34,9 @@ class PasswordValidator(BaseModel):
             LowerCaseValidator(),
             UpperCaseValidator(),
             EspecialCharacterValidator(),
+            SlashCharacterValidator(),
+            CaretCharacterValidator(),
+            TildeCharacterValidator()
         ]
         return validators
 

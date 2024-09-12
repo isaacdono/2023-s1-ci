@@ -2,11 +2,14 @@ from abc import ABC, abstractmethod
 from string import ascii_lowercase, ascii_uppercase, punctuation
 
 from .exceptions import (
+    CaretCharacterException,
     EspecialCharacterException,
     MinimumLengthException,
     NoDigitException,
     NoLowerCaseException,
     NoUpperCaseException,
+    SlashCharacterException,
+    TildeCharacterException,
 )
 
 
@@ -61,6 +64,38 @@ class EspecialCharacterValidator(Validator):
         if self.especial_set.isdisjoint(content_set):
             msg = "Passwords must have at least 1 especial character!"
             raise EspecialCharacterException(detail=msg)
+        
+
+class SlashCharacterValidator(Validator):
+    def __init__(self):
+        self.especial_set = set(punctuation)
+
+    def validate(self, content):
+        content_set = set(content)
+        if "/" in content_set and "/" in punctuation:
+            msg = "Passwords must not have / character!"
+            raise SlashCharacterException(detail=msg)
+
+
+class CaretCharacterValidator(Validator):
+    def __init__(self):
+        self.especial_set = set(punctuation)
+
+    def validate(self, content):
+        content_set = set(content)
+        if "^" in content_set and "^" in punctuation:
+            msg = "Passwords must not have ^ character!"
+            raise CaretCharacterException(detail=msg)
+        
+
+class TildeCharacterValidator(Validator):
+
+    def validate(self, content):
+        content_set = set(content)
+        if "~" in content_set and "~" in punctuation:
+            msg = "Passwords must not have ~ character!"
+            raise TildeCharacterException(detail=msg)
+
 
 
 class UpperCaseValidator(Validator):
