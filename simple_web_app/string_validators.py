@@ -64,7 +64,7 @@ class EspecialCharacterValidator(Validator):
         if self.especial_set.isdisjoint(content_set):
             msg = "Passwords must have at least 1 especial character!"
             raise EspecialCharacterException(detail=msg)
-        
+
 
 class SlashCharacterValidator(Validator):
     def __init__(self):
@@ -86,7 +86,7 @@ class CaretCharacterValidator(Validator):
         if "^" in content_set and "^" in punctuation:
             msg = "Passwords must not have ^ character!"
             raise CaretCharacterException(detail=msg)
-        
+
 
 class TildeCharacterValidator(Validator):
 
