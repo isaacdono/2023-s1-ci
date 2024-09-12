@@ -97,7 +97,6 @@ class TildeCharacterValidator(Validator):
             raise TildeCharacterException(detail=msg)
 
 
-
 class UpperCaseValidator(Validator):
     def __init__(self):
         self.upper_case_set = set(ascii_uppercase)
